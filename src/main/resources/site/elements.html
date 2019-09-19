@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Serenity Dojo - Web Testing with WebDriver and Serenity BDD - Waits</title>
+
+
+    <script type="text/javascript">
+        <!--
+
+        function initFields() {
+            setTimeout("displaySoonVisibleButton()", 1000);
+            setTimeout("displayEventuallyVisibleButton()", 6000);
+
+            setTimeout("hideSoonInvisibleButton()", 2000);
+            setTimeout("hideEventuallyInvisibleButton()", 7000);
+
+            setTimeout("loadElementsSelect()", 5000);
+            setTimeout("activateDisabledButton()", 2000);
+            setTimeout("deactivateEnabledButton()", 2000);
+
+            setTimeout("activateDisabledLaterButton()", 7000);
+
+            setTimeout("activate('passwordField')", 2000);
+            setTimeout("activate('checkboxField')", 2000);
+            setTimeout("insertText('textBox','Visible text')", 2000);
+
+
+            /*
+                    document.demo.lastname.focus()
+                    hide('city')
+                    hide('country')
+                    hide('slow-loader')
+                    displayFieldsAfterDelay();
+            */
+        }
+
+        function toggle_visibility(id) {
+            var e = document.getElementById(id);
+            if (e.style.display == 'block')
+                e.style.display = 'none';
+            else
+                e.style.display = 'block';
+        }
+
+        function hide(id) {
+            var e = document.getElementById(id);
+            e.style.display = 'none';
+        }
+
+        function insertText(id, text) {
+            var e = document.getElementById(id);
+            e.textContent = text;
+        }
+
+        function show(id) {
+            var e = document.getElementById(id);
+            e.style.display = 'block';
+        }
+
+        function activate(id) {
+            var e = document.getElementById(id);
+            e.disabled = false;
+        }
+
+        function deactivate(id) {
+            var e = document.getElementById(id);
+            e.disabled = true;
+        }
+
+
+        function displaySoonVisibleButton() {
+            show('soon-visible-button')
+        }
+
+        function displayEventuallyVisibleButton() {
+            show('eventually-visible-button')
+        }
+
+        function hideSoonInvisibleButton() {
+            hide('soon-invisible-button')
+        }
+
+        function hideEventuallyInvisibleButton() {
+            hide('eventually-invisible-button')
+        }
+
+
+        /////
+
+        function displayCityField() {
+            show('city')
+        }
+
+        function displayCountryField() {
+            show('country')
+        }
+
+        function displaySlowLoaderField() {
+            show('slow-loader')
+        }
+
+        function displayVerySlowLoadingField() {
+            show('very-slow-loader')
+        }
+
+        function hideLocationTitle() {
+            hide('placetitle')
+        }
+
+        function activateDisabledButton() {
+            activate('buttonThatIsInitiallyDisabled')
+        }
+
+        function activateDisabledLaterButton() {
+            activate('buttonThatIsEnabledLater')
+        }
+
+        function deactivateEnabledButton() {
+            deactivate('buttonThatIsInitiallyEnabled')
+        }
+
+        function removeDisappearingText() {
+            document.getElementById('dissapearingtextcell').textContent = '';
+
+        }
+
+        function loadElementsSelect() {
+            var elementSelect = document.getElementById('elements').options;
+            elementSelect[0] = new Option('Earth', 1);
+            elementSelect[1] = new Option('Air', 2);
+            elementSelect[2] = new Option('Fire', 3);
+            elementSelect[3] = new Option('Water', 4);
+        }
+
+        function displayFieldsAfterDelay() {
+            setTimeout("loadElementsSelect()", 1500);
+            setTimeout("displayCityField()", 1500);
+            setTimeout("displayCountryField()", 1500);
+            setTimeout("displaySlowLoaderField()", 4000);
+            setTimeout("displayVerySlowLoadingField()", 60000);
+            setTimeout("hideLocationTitle()", 3000);
+            setTimeout("activateDisabledButton()", 3000);
+            setTimeout("deactivateEnabledButton()", 3000);
+            setTimeout("removeDisappearingText()", 3000);
+        }
+
+        function focusOn(field) {
+            document.getElementById('focusmessage').textContent = '';
+        }
+
+        function focusOff(field) {
+            document.getElementById('focusmessage').textContent = 'focus left ' + field;
+        }
+
+        //-->
+    </script>
+</head>
+<body onLoad="initFields()">
+
+<div class="jumbotron">
+    <h1 class="display-4">Serenity Dojo Web Testing</h1>
+    <blockquote class="blockquote">This page will help us experiment with locating and manipulating elements on a
+        page.
+    </blockquote>
+    <hr class="my-4">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">A simple form</h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <small class="form-text text-muted">First Name</small>
+                                    <input id="first-name" name="First Name" placeholder="Enter the first name here"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <small class="form-text text-muted">Last Name</small>
+                                    <input name="last-name" name="Last Name" placeholder="Enter the last name here"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 country-of-domicile">
+                                    <small class="form-text text-muted">Country of Domicile</small>
+                                    <select>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="USA">USA</option>
+                                        <option value="FR">France</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="IN">India</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 country-of-origin">
+                                    <small class="form-text text-muted">Country of Origin</small>
+                                    <select>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="USA">USA</option>
+                                        <option value="FR">France</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="IN">India</option>
+                                        <option value="IR">Ireland</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <small class="form-text text-muted">VIP</small>
+                                    <input id="vip" type="checkbox"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <small class="form-text text-muted">Notification Preferences</small>
+                                    <div>
+                                        <input type="radio" name="notifications-by" value="Email"
+                                               onclick="insertText('notifications-preference','Email')"/>Input
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="notifications-by" value="SMS"
+                                               onclick="insertText('notifications-preference','SMS')"/>SMS
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="notifications-by" value="Fax"
+                                               onclick="insertText('notifications-preference','Fax')"/>Fax
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="notifications-by" value="Courrier Pigeon"
+                                               onclick="insertText('notifications-preference','Pigeon')"/>Courrier Pigeon
+                                    </div>
+                                    <div>
+                                        <span id="notifications-preference">Unknown</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="#" class="badge badge-secondary">Previous Section</a>
+                                <a href="#" class="badge badge-primary">Next Section</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Form fields</h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <form>
+                                        <div class="form-group">
+
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label for="emailField">Email address</label>
+                                                        <input type="email" class="form-control" id="emailField"
+                                                               aria-describedby="emailHelp"
+                                                               placeholder="Enter email">
+                                                        <small class="form-text text-muted">Always enabled</small>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="passwordField">Password</label>
+                                                        <input type="password" disabled class="form-control"
+                                                               id="passwordField"
+                                                               placeholder="Password">
+                                                        <small class="form-text text-muted">Enabled after 2 seconds
+                                                        </small>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-check">
+                                                <input type="checkbox" disabled class="form-check-input"
+                                                       id="checkboxField">
+                                                <label class="form-check-label" for="checkboxField">Check me
+                                                    out</label>
+                                                <small class="form-text text-muted">Enabled after 2 seconds</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="elements">A slow loading dropdown</label>
+                                                <select id="elements">
+                                                    <option>Loading...</option>
+                                                </select>
+                                                <small class="form-text text-muted">Populates after 2
+                                                    seconds</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="elements">A slow loading text field</label>
+                                                <div id="textBox" class="alert alert-primary"></div>
+                                                <small class="form-text text-muted">Populates after 2
+                                                    seconds</small>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+
+</body>
+</html>
