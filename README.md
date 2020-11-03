@@ -4,7 +4,7 @@ This project is used as the basis of a number of tutorials and exercises,
 as part of the *Web Testing with Selenium and Serenity BDD*(https://serenitydojo.teachable.com/p/automated-web-testing-with-webdriver) course.
 
 The test skeletons for these exercises can be found in the `WhenLocatingElements` class. 
-The page under test is the [elements.html](src/main/resources/elements.html) file in the resources/site directory.
+The page under test is the [elements.html](src/main/resources/site/elements.html) file in the resources/site directory.
 
 ### Exercise 1 - Locate an element by id
 
